@@ -23,6 +23,14 @@ const client = new ImageAnnotatorClient();
 const multerStorage = multer.memoryStorage();
 const upload = multer({ storage: multerStorage });
 
+//Model
+const Entry = require('../models/entryModel');
+
+const router = express.Router();
+
+
+//API's
+
 app.get('/', (req, res) => {
     res.send('Hello, World!');
 });
@@ -42,6 +50,57 @@ app.post('/upload', upload.single('image'), async (req, res) => {
     res.status(500).json({ error: 'Internal Server Errorrrrrrrrrrr' });
   }
 });
+
+
+// Api for fetching Previous Records (History Page)
+
+// Get all entries
+app.get('/api/entries', async (req, res) => {
+  try {
+    const entries = await Entry.find();
+    res.json(entries);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Add a new entry
+app.post('/api/entries', async (req, res) => {
+  const newEntry = new Entry(req.body);
+  try {
+    const savedEntry = await newEntry.save();
+    res.json(savedEntry);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+// DELETE endpoint to delete an entry by ID
+app.delete('/api/entries/:identificationNumber', async (req, res) => {
+  try {
+    const identificationNumber = req.params.identificationNumber;
+    
+    // Assuming 'identificationNumber' is the correct field in your model
+    const deletedEntry = await Entry.findOneAndDelete({ identificationNumber });
+
+    if (!deletedEntry) {
+      return res.status(404).json({ message: 'Entry not found' });
+    }
+
+    res.status(200).json({ message: 'Entry deleted successfully', deletedEntry });
+  } catch (error) {
+    console.error('Delete error:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+
+
+// Connection Port
 
 const PORT = process.env.PORT || 3001;
 const server = app.listen(PORT, () => {
