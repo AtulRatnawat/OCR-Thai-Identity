@@ -7,7 +7,6 @@ import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import Box from '@mui/material/Box';
 import axios from 'axios';
 import './History.css';
-import { Button } from 'bootstrap';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#BB86FC',
@@ -44,9 +43,9 @@ export default function History() {
     };
   
     return (
-      <div className="container-history d-flex flex-column justify-content-center">
+      <div className="container-history d-flex flex-column justify-content-center ">
         {/* Top Section */}
-        <div className="top">Records</div>
+        <div className="top d-flex justify-content-center align-items-center">Records</div>
   
         {/* Bottom Section */}
         <div className="middle">

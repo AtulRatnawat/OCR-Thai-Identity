@@ -52,7 +52,11 @@ app.post('/upload', upload.single('image'), async (req, res) => {
 });
 
 
-// Api for fetching Previous Records (History Page)
+
+
+// --------------------------------------------------------------------------------------------------------
+
+/* Api for fetching Previous Records (History Page) */
 
 // Get all entries
 app.get('/api/entries', async (req, res) => {
@@ -97,7 +101,37 @@ app.delete('/api/entries/:identificationNumber', async (req, res) => {
   }
 });
 
+/* ---------------------------------------------------------------------------------------------------------*/
 
+// Get the Success OCR Operations
+// Get the Success OCR Operations
+app.get('/api/successRate', async (req, res) => {
+  try {
+    const totalEntries = await Entry.countDocuments();
+    
+    // Assuming isSuccess is stored as a boolean
+    const successfulEntries = await Entry.countDocuments({ isSuccess: true });
+
+    // // Assuming isSuccess is stored as a string
+    // const successfulEntries = await Entry.countDocuments({ isSuccess: 'true' });
+
+    const failedEntries = totalEntries - successfulEntries;
+
+    // console.log(totalEntries);
+    // console.log(successfulEntries);
+
+    const successRate = (successfulEntries / totalEntries) * 100 || 0;
+
+    res.json({
+      successfulOperations: successfulEntries,
+      failedOperations: failedEntries,
+      successRate: successRate.toFixed(2), // Round-Off to two decimal places
+    });
+  } catch (error) {
+    console.error('Error fetching success rate:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 
 // Connection Port
