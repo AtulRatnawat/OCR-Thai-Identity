@@ -4,7 +4,6 @@ const connectToDB =  require('./database');
 
 connectToDB();
 
-
 // feature/OCR-Recognition
 
 const express = require('express');
