@@ -7,11 +7,13 @@ const App = () => {
   const [labels, setLabels] = useState([]);
 
   const handleDrop = async acceptedFiles => {
+    const selectedImage = acceptedFiles[0];
     const formData = new FormData();
-    formData.append('image', acceptedFiles[0]);
-
+    formData.append('image', selectedImage);
+    setImage(selectedImage);
+  
     try {
-      const response = await axios.post('http://localhost:5000/upload', formData, {
+      const response = await axios.post('http://localhost:3001/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setLabels(response.data.labels);
@@ -34,7 +36,7 @@ const App = () => {
       {image && (
         <div>
           <h2>Image Preview:</h2>
-          <img src={image.preview} alt="Uploaded" style={{ width: '100%' }} />
+          <img src={URL.createObjectURL(image)} alt="Uploaded" style={{ width: '30%' }} />
         </div>
       )}
 
