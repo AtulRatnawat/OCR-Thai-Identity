@@ -1,0 +1,17 @@
+.container-history{
+    height: 100vh;
+    width: 100vw;
+    border: 4px greenyellow solid;
+}
+.top{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 35px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.spacing{
+    height: 10px;
+}
+.part{
+    width: 100vw;
+}
