@@ -1,0 +1,20 @@
+.container{
+    height: 100vh;
+    /* border: 4px green solid; */
+}
+.row1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 35px;
+}
+
+/* Font for UserDetails */
+.fon1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+.fon2{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    font-weight: bold;
+}

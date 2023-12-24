@@ -1,12 +1,14 @@
 import './App.css';
-import Home from './Components/Home'
-import Identity from './Components/Identity';
+// import Home from './Components/Home'
+// import Identity from './Components/Identity';
+import SuccessRate from './Components/SuccessRate';
 
 function App() {
   return (
     <div className="App">
-      {/* <Home/> */}
-      <Identity/>
+      {/* <Home/>
+      <Identity/> */}
+      <SuccessRate/>
     </div>
   );
 }
