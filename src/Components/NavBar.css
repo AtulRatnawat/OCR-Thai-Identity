@@ -1,7 +1,5 @@
-/* NavBar.css */
-
 .navbar {
-    background-color: #4CAF50; /* Set your preferred background color */
+    background-color: #4CAF50; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
@@ -29,8 +27,5 @@
   
   .nav-link:hover,
   .nav-link.active {
-    color: #FFC107; /* Set your preferred hover and active color */
+    color: #FFC107;
   }
-  
-  /* Add any additional styles as needed for your navbar */
-  
