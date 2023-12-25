@@ -1,16 +1,16 @@
 # Thai ID OCR System
 
-Welcome to the Thai ID OCR System! This project is designed to provide a solution for Optical Character Recognition (OCR) of Thai ID cards. The system includes a backend implemented in Node.js using Express and MongoDB for data storage. On the frontend, a React-based user interface interacts with the backend to upload images, view OCR results, and manage historical records.
+Welcome to the Thai ID OCR System! This project is designed to provide a solution for Optical Character Recognition (OCR) of Thai ID cards. The system includes a backend implemented in Node.js using Express and MongoDB for data storage. On the front-end, user interface (created by ReactJs) interacts with the backend to upload images, view OCR results, and manage all the records.
 
 ## Backend
 
 ### Folder Structure
 - `src`: Contains the main source code files.
   - `database.js`: Establishes a connection to MongoDB.
+- `model`: Contains the MongoDB schemas.
   - `ImgDataModel.js`: Defines the MongoDB schema for storing image data.
   - `entryModel.js`: Specifies the schema for storing OCR results.
-  - `index.js`: The main entry point for the backend application.
-- `now.json`: Configuration file for deployment (Now.sh).
+- `index.js`: The main entry point for the backend application.
 - `package.json`: Lists dependencies and scripts for the backend.
 
 ### Database
@@ -83,7 +83,7 @@ The backend uses MongoDB to store two types of data: image data (`image-data` co
    - Shows the success rate of OCR operations.
 
 5. **NavBar**
-   - Navigation bar for easy access to different sections.
+   - A navigation bar is used for easy access to different sections.
 
 ### Running the Frontend
 1. Run `npm install` to install dependencies.
