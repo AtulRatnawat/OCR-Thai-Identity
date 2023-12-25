@@ -1,23 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import {useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './Identity.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Identity() {
-  const location = useLocation();
-  const [imageData, setImageData] = useState(null);
+    const location = useLocation();
+    const [imageData, setImageData] = useState(null);
+    // eslint-disable-next-line
+    const [extractedText, setExtractedText] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const id = location.state.id;
         const fetchData = async () => {
-            try {
-                const response = await axios.get(`http://localhost:3001/api/getImageData/${id}`);
-                // console.log(response.data.imgData);
-                setImageData(response.data.imageData);
-                console.log('Fetched SuccessFully');
-            } catch (error) {
-                console.error('Error fetching image data:', error);
-            }
+        try {
+            setLoading(true);
+            const response = await axios.get(`https://backend-ocr-thai-identity.onrender.com/api/getImageData/${id}`);
+            setImageData(response.data.imageData);
+            console.log('Fetched Successfully');
+        } catch (error) {
+            console.error('Error fetching image data:', error);
+        } finally {
+            setLoading(false);
+        }
         };
 
         fetchData();
@@ -25,14 +32,34 @@ export default function Identity() {
 
     useEffect(() => {
         if (imageData !== null) {
-          console.log('Image data updated');
+          const formData = new FormData();
+          formData.append('image', new Blob([imageData], { type: 'image/png' }));
+      
+          const fetchTextData = async () => {
+            try {
+              setLoading(true);
+              const response = await axios.post('https://backend-ocr-thai-identity.onrender.com/api/fetch', formData);
+              setExtractedText(response.data);
+              console.log('Text extracted successfully');
+            } catch (error) {
+              console.error('Error extracting text:', error);
+            } finally {
+              setLoading(false);
+            }
+          };
+      
+          fetchTextData();
         }
-    }, [imageData]);
+      }, [imageData]);
 
     const handleAccept = async () => {
         // Add logic to handle user acceptance
         // For example, send a request to update the user status in the backend
         console.log('User accepted');
+    };
+
+    const handleReject = () => {
+        navigate('/');
     };
 
   return (
@@ -46,22 +73,25 @@ export default function Identity() {
     {/* Empty Space
         <div className="spacing col-sm-12"></div> */}
 
-
         {/* Middle Section */}
         <div className="middle-identity row row2-identity d-flex justify-content-center">
 
         <div className="middle-left-identity col-sm-6 d-flex justify-content-around align-items-center border border-secondary">
-            {imageData && (
+            {loading ? (
+                <p>Loading...</p>
+            ) : (
+                imageData && (
                 <img
                     src={`data:image/png;base64,${imageData.toString('base64')}`}
                     alt="User"
                     style={{
-                        width: '100%',    // Adjust as needed
-                        height: '100%',   // Adjust as needed
-                        maxWidth: '400px', // Adjust as needed
-                        maxHeight: '400px' // Adjust as needed
+                    width: '100%',
+                    height: '100%',
+                    maxWidth: '400px',
+                    maxHeight: '400px',
                     }}
                 />
+                )
             )}
         </div>
 
@@ -104,7 +134,7 @@ export default function Identity() {
                 </button>
             </div>
             <div className="bottom-right-identity col-sm-6 d-flex justify-content-around">
-                <button type="button-identity" className="btn btn-danger-identity btn-lg"> Reject </button>
+                <button type="button-identity" className="btn btn-danger-identity btn-lg" onClick={handleReject}> Reject </button>
             </div>
         </div>
 

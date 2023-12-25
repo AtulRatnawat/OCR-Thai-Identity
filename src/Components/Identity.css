@@ -78,8 +78,12 @@ body {
   }
   
   /* Hover Effects */
-  .btn-primary-identity:hover,
+  .btn-primary-identity:hover{
+    filter: brightness(110%);
+
+  }
   .btn-danger-identity:hover {
+    background-color: #e74c3c;
     filter: brightness(110%);
   }
   

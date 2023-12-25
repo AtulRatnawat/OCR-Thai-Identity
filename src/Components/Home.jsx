@@ -36,7 +36,7 @@ export default function Home() {
       setImage(selectedImage);
 
       try {
-        const response = await axios.post('http://localhost:3001/api/saveImage', formData);
+        const response = await axios.post('https://backend-ocr-thai-identity.onrender.com/api/saveImage', formData);
         setSavedImgData(response.data);
         navigate('/Identity', { state: { id: response.data._id } });
       } catch (error) {
@@ -60,7 +60,7 @@ export default function Home() {
       formData.append('image', image);
 
       try {
-        const response = await axios.post('http://localhost:3001/api/saveImage', formData);
+        const response = await axios.post('https://backend-ocr-thai-identity.onrender.com/api/saveImage', formData);
         setSavedImgData(response.data);
         navigate('/Identity', { state: { id: response.data._id } });
         setFormSubmitted(true);

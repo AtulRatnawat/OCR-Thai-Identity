@@ -12,7 +12,7 @@ export default function SuccessRate() {
 
   useEffect(() => {
     // Fetch data from the API
-    axios.get('http://localhost:3001/api/successRate') // Replace with your actual API endpoint
+    axios.get('https://backend-ocr-thai-identity.onrender.com/api/successRate') // Replace with your actual API endpoint
       .then(response => {
         setSuccessData(response.data);
     })

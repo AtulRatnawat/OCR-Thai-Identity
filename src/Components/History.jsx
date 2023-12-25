@@ -27,7 +27,7 @@ export default function History() {
 
   useEffect(() => {
     // Fetch data from the API
-    axios.get('http://localhost:3001/api/entries')
+    axios.get('https://backend-ocr-thai-identity.onrender.com/api/entries')
       .then(response => setEntries(response.data))
       .catch(error => console.error(error));
   }, []);
@@ -35,7 +35,7 @@ export default function History() {
   const handleDelete = (identificationNumber) => {
     console.log('Deleting entry with Identification Number:', identificationNumber);
 
-    axios.delete(`http://localhost:3001/api/entries/${encodeURIComponent(identificationNumber)}`)
+    axios.delete(`https://backend-ocr-thai-identity.onrender.com/api/entries/${encodeURIComponent(identificationNumber)}`)
       .then(response => {
         console.log('Delete successful:', response.data);
         setEntries(entries.filter(entry => entry.identificationNumber !== identificationNumber));
