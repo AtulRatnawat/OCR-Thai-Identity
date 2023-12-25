@@ -94,11 +94,11 @@ The backend uses MongoDB to store two types of data: image data (`image-data` co
 
 ### Backend
 - The backend is deployed on hosting services of render.
-- https://backend-ocr-thai-identity.onrender.com
+- Deployed Link - https://backend-ocr-thai-identity.onrender.com
 
 ### Frontend
 - The frontend is deployed separately on Netlify.
-- https://ocr-thai-identification.netlify.app/
+- Deployed Link - https://ocr-thai-identification.netlify.app/
 
 Feel free to explore, contribute, and enhance this Thai ID OCR System! If you encounter any issues or have suggestions, please create a new GitHub issue.
 
