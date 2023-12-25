@@ -5,6 +5,7 @@ import './Home.css';
 
 export default function Home() {
   const [image, setImage] = useState(null);
+  // eslint-disable-next-line
   const [savedImgData, setSavedImgData] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const navigate = useNavigate();
