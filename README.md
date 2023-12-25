@@ -2,6 +2,8 @@
 
 Welcome to the Thai ID OCR System! This project is designed to provide a solution for Optical Character Recognition (OCR) of Thai ID cards. The system includes a backend implemented in Node.js using Express and MongoDB for data storage. On the front-end, user interface (created by ReactJs) interacts with the backend to upload images, view OCR results, and manage all the records.
 
+**Link to project** - https://ocr-thai-identification.netlify.app/
+
 ## Backend
 
 ### Folder Structure
