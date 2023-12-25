@@ -1,0 +1,34 @@
+/* NavBar.css */
+
+.navbar {
+    background-color: #4CAF50; /* Set your preferred background color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #fff;
+  }
+  
+  .navbar-nav {
+    margin-left: auto;
+  }
+  
+  .nav-link {
+    color: #fff;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    color: #FFC107; /* Set your preferred hover and active color */
+  }
+  
+  /* Add any additional styles as needed for your navbar */
+  

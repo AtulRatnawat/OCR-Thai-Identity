@@ -1,21 +1,67 @@
-.container-success{
-    height: auto;
-    width: auto;
-    border: 4px green solid;
-}
-.row1{
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 35px;
-}
+/* SuccessRate.css */
 
-/* Font for UserDetails */
-.fon1{
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 30px;
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .container-success {
+    height: 100%;
+    background: linear-gradient(to right, #141e30, #243b55); /* Gradient background */
+    color: #BB86FC; /* Text color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .top-succ{
+    font-size: 36px;
+    font-family: 'Times New Roman', Times, serif;
+    /* font-weight: bold; */
+    margin-bottom: 20px;
+    text-align: center;
+    color: #BB86FC; /* Highlight color */
+  }
+  
+  .middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .mid-row1,
+  .mid-row2,
+  .mid-row3 {
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60vw;
+    background-color: #03DAC6;
+  }
+  
+  .fon1 {
+    font-size: 20px;
     font-weight: bold;
-}
-.fon2{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 25px;
-    font-weight: bold;
-}
+
+  }
+  
+  .fon2 {
+    font-size: 20px;
+    color: black;
+  }
+  
+  .textt {
+    color: Black; /* Success text color */
+  }
+  
+  /* Add any additional styles as needed for your SuccessRate component */
+  

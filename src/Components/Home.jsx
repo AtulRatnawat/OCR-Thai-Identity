@@ -63,6 +63,8 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
   const [image, setImage] = useState(null);
+  
+  // eslint-disable-next-line
   const [savedImgData, setSavedImgData] = useState(null);
   const navigate = useNavigate();
 
