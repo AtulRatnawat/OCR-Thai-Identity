@@ -1,12 +1,45 @@
-import React from 'react'
-import './Identity.css'
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+import './Identity.css';
 
 export default function Identity() {
+  const location = useLocation();
+  const [imageData, setImageData] = useState(null);
+
+    useEffect(() => {
+        const id = location.state.id;
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3001/api/getImageData/${id}`);
+                // console.log(response.data.imgData);
+                setImageData(response.data.imageData);
+                console.log('Fetched SuccessFully');
+            } catch (error) {
+                console.error('Error fetching image data:', error);
+            }
+        };
+
+        fetchData();
+    }, [location.state.id]);
+
+    useEffect(() => {
+        if (imageData !== null) {
+          console.log('Image data updated');
+        }
+    }, [imageData]);
+
+    const handleAccept = async () => {
+        // Add logic to handle user acceptance
+        // For example, send a request to update the user status in the backend
+        console.log('User accepted');
+    };
+
   return (
     <div className="container-identity d-flex justify-content-around flex-column">
 
         {/* Top Section */}
-        <div className="row row1">
+        <div className="row row1-identity">
             <div className="top col-sm-12 d-flex justify-content-center align-items-center">User Details</div>
         </div>
 
@@ -17,7 +50,20 @@ export default function Identity() {
         {/* Middle Section */}
         <div className="middle-identity row row2 d-flex justify-content-center">
 
-            <div className="middle-left col-sm-6  d-flex justify-content-around align-items-center border border-secondary">Image</div>
+        <div className="middle-left col-sm-6 d-flex justify-content-around align-items-center border border-secondary">
+            {imageData && (
+                <img
+                    src={`data:image/png;base64,${imageData.toString('base64')}`}
+                    alt="User"
+                    style={{
+                        width: '100%',    // Adjust as needed
+                        height: '100%',   // Adjust as needed
+                        maxWidth: '400px', // Adjust as needed
+                        maxHeight: '400px' // Adjust as needed
+                    }}
+                />
+            )}
+        </div>
 
             <div className="middle-right col-sm-6 d-flex justify-content-around flex-column">
                 <div className="row mid-row1 d-flex justify-content-center align-items-center">
@@ -53,7 +99,9 @@ export default function Identity() {
         {/* Bottom Section */}
         <div className="bottom-identity row row3">
             <div className="bottom-left col-sm-6 d-flex justify-content-around">
-                <button type="button" className="btn btn-primary btn-lg"> Accpet </button>
+                <button type="button" className="btn btn-primary btn-lg" onClick={handleAccept}>
+                    Accept
+                </button>
             </div>
             <div className="bottom-right col-sm-6 d-flex justify-content-around">
                 <button type="button" className="btn btn-danger btn-lg"> Reject </button>

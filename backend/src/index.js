@@ -25,7 +25,8 @@ const upload = multer({ storage: multerStorage });
 
 //Model
 const Entry = require('../models/entryModel');
-
+const ImgData = require('../models/ImgDataModel');
+const sizeOf = require('image-size');
 const router = express.Router();
 
 
@@ -133,6 +134,51 @@ app.get('/api/successRate', async (req, res) => {
   }
 });
 
+/*------------------------------------------------------- */
+
+//Save The Image in the database
+app.post('/api/saveImage', upload.single('image'), async (req, res) => {
+  try {
+    // Access the uploaded image data from req.file.buffer
+    const base64String = req.file.buffer.toString('base64');
+    const binaryData = Buffer.from(base64String, 'base64');
+
+    // Save the binary image data to MongoDB using the model
+    const newImgData = new ImgData({ imageData: binaryData });
+    const savedImgData = await newImgData.save();
+
+    res.status(201).json(savedImgData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
+app.get('/api/getImageData/:id', async (req, res) => {
+  try {
+    const imageId = req.params.id;
+
+    // Find the ImgData document by ID
+    const imgData = await ImgData.findOne({ _id: imageId });
+
+    if (!imgData) {
+      return res.status(404).json({ error: 'Image not found' });
+    }
+
+    // Send the image data as a response
+    const base64String = imgData.imageData.toString('base64');
+    res.status(200).json({ imageData: base64String });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
+/*-------------------------------------------------------*/
 
 // Connection Port
 
