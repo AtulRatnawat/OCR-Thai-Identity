@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const connectToDB =  require('./database');
+const connectToDB =  require('./src/database');
 
 connectToDB();
 
@@ -24,8 +24,8 @@ const multerStorage = multer.memoryStorage();
 const upload = multer({ storage: multerStorage });
 
 //Model
-const Entry = require('../models/entryModel');
-const ImgData = require('../models/ImgDataModel');
+const Entry = require('./models/entryModel');
+const ImgData = require('./models/ImgDataModel');
 const sizeOf = require('image-size');
 const router = express.Router();
 
