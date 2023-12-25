@@ -1,3 +1,109 @@
+# Thai ID OCR System
+
+Welcome to the Thai ID OCR System! This project is designed to provide a solution for Optical Character Recognition (OCR) of Thai ID cards. The system includes a backend implemented in Node.js using Express and MongoDB for data storage. On the frontend, a React-based user interface interacts with the backend to upload images, view OCR results, and manage historical records.
+
+## Backend
+
+### Folder Structure
+- `src`: Contains the main source code files.
+  - `database.js`: Establishes a connection to MongoDB.
+  - `ImgDataModel.js`: Defines the MongoDB schema for storing image data.
+  - `entryModel.js`: Specifies the schema for storing OCR results.
+  - `index.js`: The main entry point for the backend application.
+- `now.json`: Configuration file for deployment (Now.sh).
+- `package.json`: Lists dependencies and scripts for the backend.
+
+### Database
+The backend uses MongoDB to store two types of data: image data (`image-data` collection) and OCR results (`identities` collection).
+
+### API Endpoints
+
+1. **Upload Image and Perform OCR**
+   - Endpoint: `/upload`
+   - Method: POST
+   - Description: Uploads an image file and processes it using the Google Vision API for OCR. The OCR results are stored in the MongoDB `identities` collection.
+
+2. **Fetch Previous Records (History Page)**
+   - Endpoint: `/api/entries`
+   - Method: GET
+   - Description: Retrieves all previous OCR records stored in the `identities` collection.
+
+3. **Add a New Entry**
+   - Endpoint: `/api/entries`
+   - Method: POST
+   - Description: Adds a new entry to the `identities` collection. This can be used to manually add OCR results.
+
+4. **Delete an Entry by ID**
+   - Endpoint: `/api/entries/:identificationNumber`
+   - Method: DELETE
+   - Description: Deletes an OCR entry based on the identification number.
+
+5. **Get Success OCR Operations**
+   - Endpoint: `/api/successRate`
+   - Method: GET
+   - Description: Calculates and returns the success rate of OCR operations.
+
+6. **Save Image in the Database**
+   - Endpoint: `/api/saveImage`
+   - Method: POST
+   - Description: Saves the binary image data in the MongoDB `image-data` collection.
+
+7. **Get Image Data by ID**
+   - Endpoint: `/api/getImageData/:id`
+   - Method: GET
+   - Description: Retrieves the binary image data based on the image ID.
+
+### Running the Backend
+1. Set up a MongoDB database and obtain the connection URI.
+2. Create a `.env` file in the `src` folder with `DB_URI` set to your MongoDB connection URI.
+3. Run `npm install` to install dependencies.
+4. Execute `npm start` to start the backend server.
+
+## Frontend
+
+### Folder Structure
+- `src`: Contains the main React source code files.
+  - `Components`: Holds individual React components.
+  - `App.js`: The main application component.
+  - `index.js`: The entry point for the React application.
+- `public`: Contains static files like `index.html`.
+- `package.json`: Lists dependencies and scripts for the frontend.
+
+### Components
+1. **Home**
+   - Displays a welcome message on the home page.
+
+2. **Identity**
+   - Provides a form to upload an image and initiate OCR.
+
+3. **Records**
+   - Displays a list of previous OCR records.
+
+4. **SuccessRate**
+   - Shows the success rate of OCR operations.
+
+5. **NavBar**
+   - Navigation bar for easy access to different sections.
+
+### Running the Frontend
+1. Run `npm install` to install dependencies.
+2. Execute `npm start` to start the React development server.
+3. Open your browser and navigate to `http://localhost:3000` to view the application.
+
+## Deployment
+
+### Backend
+- The backend is deployed on hosting services of render.
+
+### Frontend
+- The frontend is deployed separately on Netlify.
+
+Feel free to explore, contribute, and enhance this Thai ID OCR System! If you encounter any issues or have suggestions, please create a new GitHub issue.
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
