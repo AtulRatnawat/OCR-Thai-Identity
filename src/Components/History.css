@@ -9,47 +9,46 @@ html, body, #root {
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to right, #141e30, #243b55); /* Gradient background */
+    /* background: linear-gradient(to right, #141e30, #243b55); Gradient background */
+    background-color: #f4f4f4;
+
   }
   
-  .top {
+  .top-history {
     font-size: 35px;
     font-family:'Times New Roman', Times, serif;
     margin: 20px 0;
-    color: #BB86FC;
+    color: Black;
+    font-weight: bold;
   }
   
-  .middle {
+  .middle-history {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  .part {
+  .part-history {
     width: 90%;
     padding: 20px;
     border-radius: 8px;
+    /* background-color: #BB86FC; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .paper-item {
-    background-color: #1e2127;
+  .paper-item-history {
+    background-color: #181818;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px;
     transition: background-color 0.3s ease;
-  
     &:hover {
       background-color: #181818;
     }
   }
   
-  .item-text {
-    color: #ffffff;
-  }
-  
-  .delete-icon {
+  .delete-icon-history {
     cursor: pointer;
     color: #ff5757;
     transition: color 0.3s ease;
@@ -57,5 +56,18 @@ html, body, #root {
     &:hover {
       color: #e23d3d;
     }
+  }
+
+  .download-icon-history {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #2196F3;
+    margin-left: 8px;
+  }
+  
+  .download-icon-history:hover {
+    color: #1565C0;
   }
   

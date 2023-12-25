@@ -14,6 +14,7 @@ export default function NavBar() {
         <Link className="navbar-brand" to="/">
           OCR-Thai-Identification
         </Link>
+        
         <button
           className="navbar-toggler"
           type="button"

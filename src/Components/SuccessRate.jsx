@@ -32,22 +32,22 @@ export default function SuccessRate() {
       <div className="middle row row2">
         <div className="middle-2 col-sm-12">
           <div className="row mid-row1 border border-dark">
-            <div className="fon1 mid-row1-1 col-sm-6 border border-dark textt">
-              Number Of Successful OCR Operations
+            <div className="fon1 mid-row1-1 col-sm-6 textt">
+              Number Of Successful OCR Operations : 
             </div>
-            <div className="fon2 mid-row1-2 col-sm-6 border border-dark">{successData.successfulOperations}</div>
+            <div className="fon2 mid-row1-2 col-sm-6  border border-dark">{successData.successfulOperations}</div>
           </div>
 
           <div className="row mid-row2 border border-dark">
-            <div className="fon1 mid-row2-1 col-sm-6 border border-dark textt">
-              Number Of Failed OCR Operations
+            <div className="fon1 mid-row2-1 col-sm-6">
+              Number Of Failed OCR Operations : 
             </div>
-            <div className="fon2 mid-row2-2 col-sm-6 border border-dark">{successData.failedOperations}</div>
+            <div className="fon2 mid-row2-2 col-sm-6  border border-dark">{successData.failedOperations}</div>
           </div>
 
           <div className="row mid-row3 border border-dark">
-            <div className="fon1 mid-row3-1 col-sm-6 border border-dark textt">
-              Success Rate of OCR Operations
+            <div className="fon1 mid-row3-1 col-sm-6 textt">
+              Success Rate of OCR Operations : 
             </div>
             <div className="fon2 mid-row3-2 col-sm-6 border border-dark">{successData.successRate}%</div>
           </div>
